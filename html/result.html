@@ -1,0 +1,71 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" style="border-radius: 15px;border-style:solid;border-color:lightgrey;border-width: 2px;box-shadow: 0 0 8px #ccc">
+            <h1>1-2-3 STEPS AD Reset Password</h1>
+            <h3>a MS AD Self Service web app</h3>
+            <br>
+            <br>
+            <h1>STEP 2</h1>
+          </div>
+          <div class="col-md-2 hidden-sm hidden-xs" style="border-radius: 15px;border-style:solid;border-color:lightgrey;border-width: 2px;box-shadow: 0 0 8px #ccc">
+            <img src="images/step2.png" class="center-block img-responsive">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section text-left">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" style="border-radius: 15px;border-style:solid;border-color:lightgrey;border-width: 2px;box-shadow: 0 0 5px #ccc">
+            <h3 class="text-left">You have provided your personal details:</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="border-radius: 15px;border-style:solid;border-color:lightgrey;border-width: 2px;box-shadow: 0 0 5px #ccc">
+            <form role="form" method="POST" action="verify.html">
+              <div class="form-group">
+                <label class="col-md-2 text-right" for="email">Email address :</label>
+                <div class="col-md-4">
+                  <input type="email" class="form-control" name="email" id="email" value="{{data_to_Form[0]}}" readonly="">
+                </div>
+                <label class="col-md-2 text-right" for="civil-id">Civil Identity Card :</label>
+                <div class="col-md-4">
+                  <input type="email" class="form-control" name="civil-id" id="civil-id" value="{{data_to_Form[1]}}" readonly="">
+                </div>
+                <label class="col-md-2 text-right" for="civil-id">Student Identity Card :</label>
+                <div class="col-md-4">
+                  <input type="email" class="form-control" name="student-id" id="student-id" value="{{data_to_Form[2]}}" readonly="">
+                </div>
+                <label class="col-md-2 text-right" for="phone">Personal Mobile Phone Number:</label>
+                <div class="col-md-4">
+                  <input type="email" class="form-control" name="phone" id="phone" value="{{data_to_Form[3]}}" readonly="">
+                </div>
+              </div>
+              <label class="col-md-12 text-left" for="MesgA">{{MesgA}}</label>
+              <label class="col-md-5 text-right" for="smsword">{{MesgB}}</label>
+              <div class="col-md-2 {{MesgHide}}">
+                <input type="text" class="form-control" name="smsword" id="smsword" placeholder="Fill the 4 digit Secret Word">
+              </div>
+              <div class="form-group {{MesgHide}}">
+                <div class="col-md-2 col-md-offset-5 text-left">
+                  <br>
+                  <button type="submit" class="btn btn-primary">Get me a new password</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
