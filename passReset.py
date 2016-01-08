@@ -6,7 +6,7 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 import os
-import AD_User_Pass_Reset2
+import AD_User_Pass_Reset
 
 
 tornado.options.define("port", default=8888, help="app port", type=int)
@@ -19,18 +19,18 @@ class VerificationHandler(tornado.web.RequestHandler):
                       self.get_argument('smsword','')]
 
         user_verified = False  
-        user_verified, user_dn = AD_User_Pass_Reset2.verifyADuser(form_data[0],form_data[2],form_data[3])
+        user_verified, user_dn = AD_User_Pass_Reset.verifyADuser(form_data[0],form_data[2],form_data[3])
         
 
         ####
-        ###reset cookie to something unknown to the end user (stop back-fwd multiple try)
-        self.set_secure_cookie("smsword", AD_User_Pass_Reset2.gen_random_password(4))
+        ###reset cookie to something unknown to the end user (stop back-fwd multiple tries)
+        self.set_secure_cookie("smsword", AD_User_Pass_Reset.gen_random_password(4))
         if user_verified==True and  self.get_secure_cookie('smsword')== form_data[4]:            
-            newpass=AD_User_Pass_Reset2.gen_random_password()
+            newpass=AD_User_Pass_Reset.gen_random_password()
             #Uncomment on production to reset password
-            #AD_User_Pass_Reset.resetUserPassword(user_dn,newpass)
+            AD_User_Pass_Reset.resetUserPassword(user_dn,newpass)
             print 'successfuly generated a new password :' +  newpass
-            AD_User_Pass_Reset2.CYTA_Web_SMS(form_data[3], "The new generated password is:" + newpass + \
+            AD_User_Pass_Reset.CYTA_Web_SMS(form_data[3], "The new generated password is:" + newpass + \
                                                            "\nYou may now access the organizations IT systems. We advice you to change it asap.")
             self.render("verify.html",phone=form_data[3])
 
@@ -51,7 +51,7 @@ class VerificationHandler(tornado.web.RequestHandler):
 class MainHandler(tornado.web.RequestHandler):
 
     def get(self):
-        self.set_secure_cookie("smsword", AD_User_Pass_Reset2.gen_random_password(4))
+        self.set_secure_cookie("smsword", AD_User_Pass_Reset.gen_random_password(4))
         
 ##        if not self.get_secure_cookie("smsword"):
 ##            self.set_secure_cookie("smsword", AD_User_Pass_Reset.gen_random_password(4))
@@ -70,7 +70,7 @@ class RequestHandler(tornado.web.RequestHandler):
                       self.get_argument('student-id',''),self.get_argument('phone','')]
 
         user_verified = False  
-        user_verified, _ = AD_User_Pass_Reset2.verifyADuser(form_data[0],form_data[2],form_data[3])
+        user_verified, _ = AD_User_Pass_Reset.verifyADuser(form_data[0],form_data[2],form_data[3])
         print 'user verified' +  str(user_verified) + "  " + form_data[0] + "\n" + form_data[2] + "\n" + form_data[3]
         print 'secret_cookie:' + self.get_secure_cookie('smsword')
 
@@ -82,7 +82,7 @@ class RequestHandler(tornado.web.RequestHandler):
             MesgB = 'Secret word on you mobile :'
             Button_Msg = 'Get me a new password'
             MesgHide=' '
-            AD_User_Pass_Reset2.CYTA_Web_SMS(form_data[3],'Use the following word to validate your self : ' + self.get_secure_cookie('smsword'))
+            AD_User_Pass_Reset.CYTA_Web_SMS(form_data[3],'Use the following word to validate your self : ' + self.get_secure_cookie('smsword'))
         else:
             MesgA = 'Failed to verify your identity. Go back, correct the information needed and try again!!!'\
                     'Have in mind that all attempts are beeing logged and monitor by the Organization\'s IT Systems!'
