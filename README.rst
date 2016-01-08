@@ -35,17 +35,26 @@ B. Edit the AD_User_Pass_Reset.py
 Find  the CYTA_Web_SMS(mobileNumber) function and replace the *fill in username* and *fill in secret key*
 with your provided data so you will be able to use the CYTA SMS gateway.
 
-Find the ReplacateAD() function and fill in the necessary data on *pyad.pyad.set_defaults(ldap_server='',.... *
+Find the ReplicateAD() function and fill in the necessary data on *pyad.pyad.set_defaults(ldap_server='',....*
 
 Also fill in the necessary data on the *q.execute_query(......, base_dn= "DC=,DC=DC=")*
 
-Find the verifyADuser(useremail, ID, mobile) function and and fill in the necessary data on *pyad.pyad.set_defaults(ldap_server='',.... *
+Find the verifyADuser(useremail, ID, mobile) function and and fill in the necessary data on *pyad.pyad.set_defaults(ldap_server='',....*
 
 Save changes.
 
+Initialization - First Run
+==========================
+It is essential that after configuration you run the *AD_Replication.py* file. It will take from seconds to a couple of minutes
+to localy replicate necessary information on a local file shelve. This is necessary for not directly quering the AD, causing traffic and possibly a denial of service situation. After completion the newly created file *AD_Replica.dat* will be placed on current directory.
+
+Normal Operation
+================
+Web application should be started by running the *passReset.py*, tornado web server will start listening to requests.
+It is also recomended that you schedule a task that will run the *AD_Replication.py* at least once per day so any changes
+will sync to the local *AD_Replica.dat* file.
 
 
 License
 =======
-
 SelfServiceResetADPassword is licensed under the GNU ver. 3 License.
