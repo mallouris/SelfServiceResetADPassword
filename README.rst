@@ -28,7 +28,21 @@ A. Edit the passReset.py file
 Find the main() function and set the parameter cookie_secret to a unique secret string. Replace the default
 secret word *61oETzSaLaMmANtArgEmGePPFuYh7EQnp2zrtP1o/Vo=*. 
 
-Save changes and exit the editor.
+Save changes.
+
+B. Edit the AD_User_Pass_Reset.py
+
+Find  the CYTA_Web_SMS(mobileNumber) function and replace the *fill in username* and *fill in secret key*
+with your provided data so you will be able to use the CYTA SMS gateway.
+
+Find the ReplacateAD() function and fill in the necessary data on *pyad.pyad.set_defaults(ldap_server='',.... *
+
+Also fill in the necessary data on the *q.execute_query(......, base_dn= "DC=,DC=DC=")*
+
+Find the verifyADuser(useremail, ID, mobile) function and and fill in the necessary data on *pyad.pyad.set_defaults(ldap_server='',.... *
+
+Save changes.
+
 
 
 License
