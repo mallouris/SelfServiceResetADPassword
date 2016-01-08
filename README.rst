@@ -19,6 +19,18 @@ How it works
 Password reset is accomplished through the use of short message service (sms). 
 
 
+Configuration
+=============
+After cloning this repository it is necessary for configuration changes for the web app to work correctly.
+
+A. Edit the passReset.py file
+
+Find the main() function and set the parameter cookie_secret to a unique secret string. Replace the default
+secret word *61oETzSaLaMmANtArgEmGePPFuYh7EQnp2zrtP1o/Vo=*. 
+
+Save changes and exit the editor.
+
+
 License
 =======
 
