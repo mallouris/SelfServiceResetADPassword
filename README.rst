@@ -1,22 +1,23 @@
-A Self Service Reset Password Tool for MS Active Directory using SMS messages
-=============================================================================
+1-2-3 Self Service Reset Password Tool for MS Active Directory using SMS messages
+=================================================================================
 
 
 Introduction
 ============
 
-A small web application, that will provide the functionality for a secure self service password reset on a Microsoft Active Directory Users repository.
+A small web application, that will provide the simple functionality *(in three steps) for a secure self service password reset on a Microsoft Active Directory Users Repository.
 
 
 Requirements
 ============		
 
-SelfServiceResetADPassword requires pywin32, pyAD, tornado web server, bootstrap3 framework, windows 7 or 2008R2, python 2.7, SMS gateway (Implementation for the CYTA sms gateway is now available)
+SelfServiceResetADPassword requires pywin32, pyAD, httplib2, tornado web server, bootstrap3 framework, windows 7 or 2008R2, python 2.7, SMS gateway (Implementation for the CYTA sms gateway is now available).
 
 
 How it works
 ============
-Password reset is accomplished through the use of short message service (sms). 
+Password reset is accomplished through the use of short message service (sms). A two factor authentication method is implemented since
+it is necessary for the user to enter personal information like Civil-ID, employee-ID, mobile phone number in step 1. After verification of the entered information by the system a unique 4 digitword is send to the user's mobile number, this is step 2. Upon enering this unique 4 digitword to the application a new password is generated and send to user's mobile number, this is step 3, completing the task of a secure self service password.
 
 
 Configuration
