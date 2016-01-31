@@ -29,7 +29,7 @@ B. Download and install `pywin32 <https://github.com/mallouris/SelfServiceResetA
 
 C. Install dependencies pyAD, httplib2, tornado packages
 
-Proceed and open a command prompt with elevated privileges.Go to to path C:\Python27\Scripts. Execute the following command to download and install the dependencies.
+Proceed and open a command prompt with elevated privileges.Go to to path C:\\Python27\\Scripts. Execute the following command to download and install the dependencies.
 
 ``pip2 install pyAD httplib2 tornado``
 
